@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho | La Belle Lingerie</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">La Belle <span>Lingerie</span></a>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="login.html" id="login-link">Entrar</a>
+        <div id="user-area"></div>
+        <a href="carrinho.html" class="cart-btn">
+          Carrinho <span class="cart-count">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Seu Carrinho</h2>
+    
+    <div style="display: grid; grid-template-columns: 1fr 320px; gap: 30px;">
+      <div id="cart-items"></div>
+      
+      <div class="cart-summary" id="cart-summary" style="display: none;">
+        <h3>Resumo do Pedido</h3>
+        <div class="cart-total" id="cart-total">R$ 0,00</div>
+        <a href="checkout.html" class="btn btn-bordo" style="width: 100%; text-align: center;">
+          Finalizar Compra
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 La Belle Lingerie — Todos os direitos reservados</p>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>

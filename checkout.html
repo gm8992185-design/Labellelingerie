@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | La Belle Lingerie</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- SDK Mercado Pago -->
+  <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">La Belle <span>Lingerie</span></a>
+    </div>
+  </header>
+
+  <section class="section" style="max-width: 600px;">
+    <h2 class="section-title">Finalizar Compra</h2>
+
+    <div class="auth-container" style="margin: 0;">
+      <p style="margin-bottom: 20px;">Total a pagar: <strong id="checkout-total" style="color: var(--bordo); font-size: 1.4rem;"></strong></p>
+
+      <div class="form-group">
+        <label>Nome completo</label>
+        <input type="text" id="nome" required>
+      </div>
+      <div class="form-group">
+        <label>E-mail</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label>CPF</label>
+        <input type="text" id="cpf" placeholder="000.000.000-00" required>
+      </div>
+
+      <div id="payment-brick" style="margin: 30px 0;"></div>
+
+      <button id="pay-btn" class="btn btn-bordo" style="width: 100%;">Pagar com Mercado Pago</button>
+      
+      <p style="font-size: 0.85rem; color: var(--cinza); margin-top: 16px; text-align: center;">
+        Pagamento seguro via Mercado Pago
+      </p>
+    </div>
+  </section>
+
+  <script src="js/cart.js"></script>
+  <script>
+    // Atualiza o total
+    document.getElementById('checkout-total').textContent = 
+      'R$ ' + getCartTotal().toFixed(2);
+
+    // ========== CONFIGURAÇÃO MERCADO PAGO ==========
+    // 1. Crie uma conta em https://www.mercadopago.com.br
+    // 2. Vá em Suas integrações → Credenciais de teste
+    // 3. Cole sua Public Key abaixo:
+    
+    const PUBLIC_KEY = 'TEST-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'; // ← TROQUE AQUI
+
+    const mp = new MercadoPago(PUBLIC_KEY, {
+      locale: 'pt-BR'
+    });
+
+    // Exemplo simples de preferência (em produção isso deve vir do backend)
+    document.getElementById('pay-btn').addEventListener('click', async () => {
+      const total = getCartTotal();
+      
+      if (total <= 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+      }
+
+      // Em produção você deve criar a preferência no seu backend
+      // e retornar o preferenceId. Aqui está um exemplo de como chamar:
+      
+      alert('Para funcionar de verdade:\n\n1. Crie uma conta no Mercado Pago\n2. Gere uma Public Key de teste\n3. Crie um backend que gere a preferência de pagamento\n4. Substitua a PUBLIC_KEY no código\n\nPor enquanto o fluxo do carrinho e login já está 100% funcional.');
+      
+      // Exemplo de redirecionamento (quando tiver preferenceId):
+      // window.location.href = `https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=${preferenceId}`;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | La Belle Lingerie</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <a href="index.html" class="logo">La Belle <span>Lingerie</span></a>
+      <nav class="nav">
+        <a href="index.html">Início</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="carrinho.html" class="cart-btn">
+          Carrinho <span class="cart-count">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="auth-container">
+    <h2>Entrar</h2>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit" class="btn btn-bordo" style="width: 100%;">Entrar</button>
+    </form>
+    <p class="auth-switch">
+      Não tem conta? <a href="#" onclick="showRegister()">Cadastre-se</a>
+    </p>
+  </div>
+
+  <div class="auth-container" id="register-box" style="display: none;">
+    <h2>Criar Conta</h2>
+    <form id="register-form">
+      <div class="form-group">
+        <label for="reg-name">Nome completo</label>
+        <input type="text" id="reg-name" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-email">E-mail</label>
+        <input type="email" id="reg-email" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-password">Senha</label>
+        <input type="password" id="reg-password" required minlength="6">
+      </div>
+      <button type="submit" class="btn btn-bordo" style="width: 100%;">Cadastrar</button>
+    </form>
+    <p class="auth-switch">
+      Já tem conta? <a href="#" onclick="showLogin()">Entrar</a>
+    </p>
+  </div>
+
+  <script>
+    function showRegister() {
+      document.querySelector('.auth-container').style.display = 'none';
+      document.getElementById('register-box').style.display = 'block';
+    }
+    function showLogin() {
+      document.getElementById('register-box').style.display = 'none';
+      document.querySelector('.auth-container').style.display = 'block';
+    }
+  </script>
+
+  <script src="js/auth.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
